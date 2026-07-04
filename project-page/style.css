@@ -231,8 +231,6 @@ section{ padding: 64px 0; }
   background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
   padding: 20px 22px;
 }
-.case-card .metric-row{ display:flex; flex-wrap:wrap; gap: 8px 18px; margin-top: 10px; font-family: var(--font-mono); font-size:.82rem; }
-.case-card .metric-row span b{ color: var(--ink); }
 
 .verdict-demo{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:32px 24px; margin:28px 0; }
 .verdict-demo .vd-node, .verdict-demo .vd-arrow, .verdict-demo .vd-verdict{ opacity:0; }
