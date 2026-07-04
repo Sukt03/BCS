@@ -132,6 +132,28 @@
         </div>
       </div>
 
+      <div class="verdict-demo reveal" role="img" aria-label="Diagram: the same EEG reconstruction is scored two ways. SSIM gives it 0.042 and flags it as a failure. The VLM-routed T-PAS and T-SAS scores give 0.792 and 1.000 and correctly recognize it as recoverable.">
+        <div class="vd-node n1"><svg viewBox="0 0 90 40" width="70" height="32"><polyline fill="none" stroke="var(--ink-soft)" stroke-width="2" points="0,20 8,6 16,34 24,10 32,30 40,14 48,26 56,17 64,23 72,20 80,20 90,20"/></svg><span>EEG signal</span></div>
+        <div class="vd-arrow a1"></div>
+        <div class="vd-node n2"><div class="vd-box">Reconstruction model</div></div>
+        <div class="vd-arrow a2"></div>
+        <div class="vd-node n3"><div class="vd-box">Generated image</div></div>
+        <div class="vd-arrow a3"></div>
+        <div class="vd-verdicts">
+          <div class="vd-verdict wrong">
+            <span class="vlabel">SSIM</span>
+            <span class="vscore">0.042</span>
+            <span class="vtag">✗ flags it as failed</span>
+          </div>
+          <div class="vd-verdict right">
+            <span class="vlabel">T-PAS / T-SAS</span>
+            <span class="vscore">0.792 / 1.000</span>
+            <span class="vtag">✓ correctly recoverable</span>
+          </div>
+        </div>
+      </div>
+      <p class="note">Same reconstruction as the harshness example above — animated for emphasis, not a new claim. Numbers match Figure 1.</p>
+
     </div>
   </section>
 
