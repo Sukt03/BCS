@@ -130,18 +130,17 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 
 /* ---------------- Hero ---------------- */
 .hero{ padding: 76px 0 40px; position:relative; }
-.hero .wrap{ position:relative; z-index:1; text-align:center; }
-.hero-title-row{ padding: 0 clamp(20px, 4vw, 64px); text-align:center; }
+.hero .wrap{ position:relative; z-index:1; }
 @keyframes sig-drift{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 .hero h1{
-  font-size: clamp(2.4rem, 1rem + 5.2vw, 5.2rem);
+  font-size: clamp(2.1rem, 1.4rem + 3.2vw, 3.6rem);
   max-width: none;
   overflow-wrap: break-word;
   word-break: break-word;
 }
 .hero .lede{
   font-family: var(--font-body); font-style: italic; color: var(--ink-soft);
-  font-size: 1.22rem; max-width: 46ch; margin: .3em auto 1.6em;
+  font-size: 1.22rem; max-width: 46ch; margin: .3em 0 1.6em;
 }
 .badge{
   display:inline-flex; align-items:center; gap:.5em;
@@ -157,7 +156,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .page-signal-bg .sig-a{ top:6%; opacity:.07; animation:sig-drift 42s linear infinite; }
 .page-signal-bg .sig-b{ top:40%; opacity:.05; animation:sig-drift 63s linear infinite reverse; }
 
-.cta-row{ display:flex; flex-wrap:wrap; justify-content:center; gap: 12px; margin-top: 4px; }
+.cta-row{ display:flex; flex-wrap:wrap; gap: 12px; margin-top: 4px; }
 .btn{
   font-family: var(--font-mono); font-size: .86rem; font-weight: 500;
   padding: 12px 20px; border-radius: var(--radius-sm);
