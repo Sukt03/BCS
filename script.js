@@ -30,9 +30,6 @@ const revealEls = document.querySelectorAll('.reveal');
 if (prefersReduced || !('IntersectionObserver' in window)) {
   revealEls.forEach((el) => {
     el.classList.add('visible');
-    el.querySelectorAll('.kring-fill').forEach(c => {
-      c.style.strokeDashoffset = c.dataset.offset;
-    });
   });
 } else {
   const io = new IntersectionObserver(
@@ -40,9 +37,6 @@ if (prefersReduced || !('IntersectionObserver' in window)) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          entry.target.querySelectorAll('.kring-fill').forEach(c => {
-            c.style.strokeDashoffset = c.dataset.offset;
-          });
           io.unobserve(entry.target);
         }
       });
