@@ -28,7 +28,7 @@
       <li><a href="#validation">Validation</a></li>
       <li><a href="#bibtex">BibTeX</a></li>
     </ul>
-    <a class="btn btn-ghost" href="paper.pdf" target="_blank" rel="noopener">Paper ↗</a>
+    <a class="btn btn-ghost" href="https://openreview.net/forum?id=vVEQUYVaLu" target="_blank" rel="noopener">Paper ↗</a>
   </div>
 </header>
 
@@ -36,6 +36,14 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
+    <div class="hero-signal-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none" class="sig-a">
+        <polyline fill="none" stroke="var(--ink-faint)" stroke-width="1.5" points="0,100 40,60 80,140 120,70 160,130 200,80 240,120 280,90 320,110 360,95 400,105 440,100 480,102 520,98 560,100 600,100 640,60 680,140 720,70 760,130 800,80 840,120 880,90 920,110 960,95 1000,105 1040,100 1080,102 1120,98 1160,100 1200,100"/>
+      </svg>
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none" class="sig-b">
+        <polyline fill="none" stroke="var(--line)" stroke-width="1.5" points="0,140 50,110 100,160 150,120 200,150 250,125 300,145 350,130 400,140 450,133 500,138 550,135 600,140 650,110 700,160 750,120 800,150 850,125 900,145 950,130 1000,140 1050,133 1100,138 1150,135 1200,140"/>
+      </svg>
+    </div>
     <div class="wrap">
       <p class="eyebrow">EEG → Image · Evaluation</p>
       <h1>Lost in Visual Translation</h1>
@@ -45,7 +53,7 @@
       <div class="badge"><span class="dot"></span> Accepted — HBAI 2026 (IJCAI-ECAI Workshop), Poster</div>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="paper.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a>
+        <a class="btn btn-primary" href="https://openreview.net/forum?id=vVEQUYVaLu" target="_blank" rel="noopener">Read the paper</a>
         <span class="btn btn-disabled" aria-disabled="true" title="Code and resources will be released upon publication, per the paper.">Code · releasing at publication</span>
         <a class="btn btn-ghost" href="#bibtex">Jump to BibTeX</a>
       </div>
@@ -127,14 +135,6 @@
     </div>
   </section>
 
-  <!-- ============ ABSTRACT ============ -->
-  <section id="abstract" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-    <div class="wrap">
-      <p class="eyebrow reveal">Abstract</p>
-      <p class="reveal" style="font-size:1.05rem;">Evaluating EEG-to-image reconstruction is notoriously difficult because brain-derived images are often distorted and low-detail. Standard metrics like SSIM, LPIPS, and CLIP frequently fail, either penalizing semantically recoverable reconstructions or rewarding visually plausible but incorrect outputs. We bridge this gap with a BCI-aware framework focused on perceptual-semantic coherence. Analyzing 6,885 image pairs across ATM, ENIGMA, BrainVis, and DreamDiffusion, we demonstrate that pixel-level metrics (MSE, SSIM) correlate near-zero with semantic consistency, while representation-based scores conflate distinct visual attributes. We introduce a routed annotation protocol using four open-weight VLMs to estimate Tolerant Perceptual (T-PAS) and Semantic (T-SAS) Alignment Scores, then distill this supervision into the BCI-Coherence Score (BCS) — a compact evaluator that predicts consensus without repeated VLM inference. On held-out data, our strongest BCS ensemble achieves a PAS MAE of 0.079 (r = 0.700) and SAS MAE of 0.082 (r = 0.850); at the question level, it reaches Q-MAE of 0.122, Q-r of 0.783, and Q-ρ of 0.788. A validation study with 15 human annotators confirms that coherence judgments are significantly more reliable than isolated perceptual or semantic ones (κ = 0.882 ± 0.174, α = 0.882). These results advocate for shifting evaluation from mere visual fidelity toward perceptual–semantic recoverability.</p>
-    </div>
-  </section>
-
   <div class="divider" aria-hidden="true">
     <div class="wrap-wide">
       <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
@@ -171,45 +171,30 @@
         <figcaption><b>Figure 2.</b> Reconstruction outputs are scored two ways — conventional metrics, and four VLM annotators answering routed perceptual/semantic questions — and the VLM consensus is distilled into BCS, then checked against human judgment.</figcaption>
       </figure>
 
-      <h3 style="margin-top:8px;">Four VLM annotators, four operating points</h3>
-      <p>InternVL3, SAIL-VL, OLA-7B, and Ovis2-8B were chosen for being open-weight, reproducible, and representative of strong contemporary performance. They disagree enough in calibration to justify a consensus signal rather than treating any one as ground truth (Table 4):</p>
-      <div class="table-wrap reveal">
-        <table>
-          <thead><tr><th class="rowlabel">VLM</th><th>Mean T-PAS</th><th>Mean T-SAS</th></tr></thead>
-          <tbody>
-            <tr><td class="rowlabel">InternVL3</td><td>0.341</td><td>0.252</td></tr>
-            <tr><td class="rowlabel">SAIL-VL</td><td>0.213</td><td>0.157</td></tr>
-            <tr><td class="rowlabel">OLA-7B</td><td>0.433</td><td>0.335</td></tr>
-            <tr><td class="rowlabel">Ovis2-8B</td><td>0.337</td><td>0.345</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">SAIL-VL is the most conservative annotator; OLA-7B the most permissive, especially on perceptual questions.</p>
-
       <h3 style="margin-top:44px;">The 12 routed questions</h3>
       <p>Each pair is scored no / somewhat / yes (→ 0 / 0.5 / 1). Questions that don't fit a given image pair are omitted rather than forced (Table 3).</p>
       <div class="qgrid">
         <div class="qgroup">
           <h4>Perceptual</h4>
-          <ul class="qlist">
-            <li><b>P1</b>Spatial layout — does the generated image preserve the overall layout and position of the main regions?</li>
-            <li><b>P2</b>Shape — is the main object's shape or silhouette similar?</li>
-            <li><b>P3</b>Texture/material — are surface texture or material patterns similar?</li>
-            <li><b>P4</b>Color — are the main colors and chromatic appearance similar?</li>
-            <li><b>P5</b>Artifacts — is the image free from severe artifacts or noise that obscure the content?</li>
-            <li><b>P6</b>Holistic visual recoverability — can the original visual content be broadly recovered?</li>
-          </ul>
+          <div class="qcards">
+            <div class="qcard"><span class="qbadge qbadge-p">P1</span><p>Spatial layout — does the generated image preserve the overall layout and position of the main regions?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-p">P2</span><p>Shape — is the main object's shape or silhouette similar?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-p">P3</span><p>Texture/material — are surface texture or material patterns similar?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-p">P4</span><p>Color — are the main colors and chromatic appearance similar?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-p">P5</span><p>Artifacts — is the image free from severe artifacts or noise that obscure the content?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-p">P6</span><p>Holistic visual recoverability — can the original visual content be broadly recovered?</p></div>
+          </div>
         </div>
         <div class="qgroup">
           <h4>Semantic</h4>
-          <ul class="qlist">
-            <li><b>S1</b>Basic category — is the main object or scene category correct?</li>
-            <li><b>S2</b>Specific identity — is the specific subtype or identity correct, not just the broad category?</li>
-            <li><b>S3</b>Function/purpose — does the generated content preserve the object's role or purpose?</li>
-            <li><b>S4</b>Quantity — is the number of main objects or entities preserved?</li>
-            <li><b>S5</b>Scene/context — is the surrounding scene or environment similar?</li>
-            <li><b>S6</b>Holistic semantic recoverability — can the original meaning be understood?</li>
-          </ul>
+          <div class="qcards">
+            <div class="qcard"><span class="qbadge qbadge-s">S1</span><p>Basic category — is the main object or scene category correct?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-s">S2</span><p>Specific identity — is the specific subtype or identity correct, not just the broad category?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-s">S3</span><p>Function/purpose — does the generated content preserve the object's role or purpose?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-s">S4</span><p>Quantity — is the number of main objects or entities preserved?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-s">S5</span><p>Scene/context — is the surrounding scene or environment similar?</p></div>
+            <div class="qcard"><span class="qbadge qbadge-s">S6</span><p>Holistic semantic recoverability — can the original meaning be understood?</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -224,15 +209,6 @@
         <p>Trained on a concept-level split of the 6,885 pairs (4,797 train / 1,089 val / 999 held-out test) using frozen SigLIP + CLIP + DINOv3 encoders feeding a small residual MLP head — only the MLP is trained.</p>
       </div>
 
-      <!--
-        NOTE for the authors (internal — remove before hosting):
-        The abstract's question-level figures (Q-MAE 0.122, Q-r 0.783, Q-ρ 0.788) match the
-        4-VLM ORDINAL ensemble row below, not the 4-VLM CONTINUOUS ensemble row that the
-        PAS/SAS numbers (0.079 / 0.700 / 0.082 / 0.850) come from. As written, the abstract
-        describes these seven numbers as one model ("our strongest BCS ensemble... it
-        reaches..."), but Table 6 shows they span two different rows. Worth reconciling
-        before camera-ready — this page shows each row's own values rather than blending them.
-      -->
       <div class="table-wrap reveal">
         <table>
           <caption>Table 6 — held-out performance (999 test pairs). Lower MAE / higher r,ρ is better.</caption>
@@ -257,11 +233,6 @@
         <h2>Coherence judgments hold up. Isolated ones don't.</h2>
         <p>Across all 6,885 pairs, four VLMs produced 82,410 scored question-instances. Unanimous 4-way agreement: <strong>44.7%</strong>; overall Fleiss' κ = <strong>0.363</strong> — moderate, as expected when judging heavily degraded reconstructions. The strongest pair is InternVL3 ↔ Ovis2-8B (weighted κ = 0.594, rationale similarity 0.700).</p>
       </div>
-
-      <figure class="figure reveal">
-        <img src="figure3_vlm_agreement.png" alt="Two heatmap matrices: pairwise answer agreement (weighted kappa) and pairwise rationale similarity (SBERT cosine) between the four VLM annotators InternVL3, SAIL-VL, OLA, and Ovis2.">
-        <figcaption><b>Figure 3.</b> Pairwise VLM answer agreement (left) and rationale similarity (right). Models disagree more in calibration than in the visual/semantic evidence their rationales cite.</figcaption>
-      </figure>
 
       <div class="two-col reveal" style="margin-top:8px;">
         <div>
@@ -288,21 +259,21 @@
         <h3>15 human annotators confirm the pattern</h3>
         <p>Table 7 — Cohen's κ (mean ± s.d. across annotator pairs) and Krippendorff's α.</p>
       </div>
-      <div class="kbars reveal">
-        <div class="kbar-row">
-          <span class="kbar-label">Perceptual alone</span>
-          <div class="kbar-track"><div class="kbar-fill" style="width:11%; background:var(--static);"></div></div>
-          <span class="kbar-val">κ 0.110</span>
+      <div class="kring-row reveal">
+        <div class="kring">
+          <svg viewBox="0 0 130 130"><circle class="kring-track" cx="65" cy="65" r="54"/>
+            <circle class="kring-fill" cx="65" cy="65" r="54" stroke="var(--static)" stroke-dasharray="339.29" stroke-dashoffset="302.1"/></svg>
+          <div class="kring-value">0.110</div><div class="kring-label">Perceptual alone</div>
         </div>
-        <div class="kbar-row">
-          <span class="kbar-label">Semantic alone</span>
-          <div class="kbar-track"><div class="kbar-fill" style="width:48.3%; background:var(--error);"></div></div>
-          <span class="kbar-val">κ 0.483</span>
+        <div class="kring">
+          <svg viewBox="0 0 130 130"><circle class="kring-track" cx="65" cy="65" r="54"/>
+            <circle class="kring-fill" cx="65" cy="65" r="54" stroke="var(--error)" stroke-dasharray="339.29" stroke-dashoffset="175.4"/></svg>
+          <div class="kring-value">0.483</div><div class="kring-label">Semantic alone</div>
         </div>
-        <div class="kbar-row">
-          <span class="kbar-label">Coherence (joint)</span>
-          <div class="kbar-track"><div class="kbar-fill" style="width:88.2%; background:var(--signal);"></div></div>
-          <span class="kbar-val">κ 0.882</span>
+        <div class="kring">
+          <svg viewBox="0 0 130 130"><circle class="kring-track" cx="65" cy="65" r="54"/>
+            <circle class="kring-fill" cx="65" cy="65" r="54" stroke="var(--signal)" stroke-dasharray="339.29" stroke-dashoffset="40.0"/></svg>
+          <div class="kring-value">0.882</div><div class="kring-label">Coherence (joint)</div>
         </div>
       </div>
       <p class="note reveal">Perceptual α = 0.094, semantic α = 0.574, coherence α = 0.882. Measured on a targeted 18-image subset (9 stimuli × 2 reconstructions) stratified toward high-perceptual, high-semantic, and coherence-extreme cases — built to stress-test disagreement, not a random sample of reconstruction quality.</p>
