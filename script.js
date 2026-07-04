@@ -28,13 +28,21 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 const revealEls = document.querySelectorAll('.reveal');
 
 if (prefersReduced || !('IntersectionObserver' in window)) {
-  revealEls.forEach((el) => el.classList.add('visible'));
+  revealEls.forEach((el) => {
+    el.classList.add('visible');
+    el.querySelectorAll('.kring-fill').forEach(c => {
+      c.style.strokeDashoffset = c.dataset.offset;
+    });
+  });
 } else {
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          entry.target.querySelectorAll('.kring-fill').forEach(c => {
+            c.style.strokeDashoffset = c.dataset.offset;
+          });
           io.unobserve(entry.target);
         }
       });
@@ -42,4 +50,33 @@ if (prefersReduced || !('IntersectionObserver' in window)) {
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
   );
   revealEls.forEach((el) => io.observe(el));
+}
+
+const statEls = document.querySelectorAll('.stat .num');
+statEls.forEach(el => { el.dataset.raw = el.textContent.trim(); });
+function formatStat(raw, value){
+  if (raw.includes(',')) return Math.round(value).toLocaleString('en-US');
+  if (raw.includes('.')) return value.toFixed(raw.split('.')[1].length);
+  return Math.round(value).toString();
+}
+if (!prefersReduced && statEls.length && 'IntersectionObserver' in window) {
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.raw.replace(/,/g, ''));
+      const duration = 900;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = formatStat(el.dataset.raw, target * eased);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = el.dataset.raw;
+      }
+      requestAnimationFrame(tick);
+      statObserver.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  statEls.forEach(el => statObserver.observe(el));
 }

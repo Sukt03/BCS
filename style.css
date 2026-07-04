@@ -47,6 +47,7 @@ html{ scroll-behavior: smooth; }
 
 body{
   margin:0;
+  position: relative;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
@@ -130,12 +131,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 /* ---------------- Hero ---------------- */
 .hero{ padding: 76px 0 40px; position:relative; overflow:hidden; }
 .hero .wrap{ position:relative; z-index:1; }
-.hero-signal-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
-.hero-signal-bg svg{ position:absolute; left:0; width:200%; height:100%; }
-.hero-signal-bg .sig-a{ top:8%; opacity:.16; animation:sig-drift 42s linear infinite; }
-.hero-signal-bg .sig-b{ top:55%; opacity:.10; animation:sig-drift 63s linear infinite reverse; }
+.hero-title-row{ padding: 0 32px; }
 @keyframes sig-drift{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-.hero h1{ font-size: clamp(2.1rem, 1.3rem + 3.4vw, 3.4rem); max-width: 16ch; }
+.hero h1{ font-size: clamp(2.6rem, 1rem + 8vw, 8.5rem); max-width: none; }
 .hero .lede{
   font-family: var(--font-body); font-style: italic; color: var(--ink-soft);
   font-size: 1.22rem; max-width: 46ch; margin: .3em 0 1.6em;
@@ -148,6 +146,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   margin-bottom: 1.8em;
 }
 .badge .dot{ width:6px; height:6px; border-radius:50%; background: var(--signal); }
+
+.page-signal-bg{ position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+.page-signal-bg svg{ position:absolute; left:0; width:200%; height:100%; }
+.page-signal-bg .sig-a{ top:6%; opacity:.07; animation:sig-drift 42s linear infinite; }
+.page-signal-bg .sig-b{ top:40%; opacity:.05; animation:sig-drift 63s linear infinite reverse; }
 
 .cta-row{ display:flex; flex-wrap:wrap; gap: 12px; margin-top: 4px; }
 .btn{
