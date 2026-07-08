@@ -29,9 +29,9 @@
       <span class="nav-acceptance">Accepted poster · Human Brain and Artificial Intelligence</span>
     </div>
     <nav aria-label="Primary">
-      <a href="#key-results">Results</a>
       <a href="#problem">Problem</a>
       <a href="#solution">Solution</a>
+      <a href="#key-results">Results</a>
       <a href="#validation">Validation</a>
       <a href="#bibtex">BibTeX</a>
     </nav>
@@ -58,56 +58,31 @@
     </div>
   </section>
 
-  <section id="key-results" class="section-white">
+  <section class="section-white pipeline-intro-section">
     <div class="wrap-wide">
-      <div class="result-grid reveal">
-        <article>
-          <strong>0.850</strong>
-          <span>SAS-r with semantic consensus</span>
-          <small>held-out EEG reconstruction pairs</small>
-        </article>
-        <article>
-          <strong>0.079</strong>
-          <span>PAS mean absolute error</span>
-          <small>low error on perceptual alignment</small>
-        </article>
-        <article>
-          <strong>0.882</strong>
-          <span>Cohen’s κ for joint coherence</span>
-          <small>18 human annotators</small>
-        </article>
-      </div>
-
       <div class="summary-board reveal" aria-label="Poster-style summary of the work">
         <div class="board-title">
           <p class="eyebrow">At a glance</p>
         </div>
 
-        <figure class="pipeline-board">
-          <img src="pipeline_drawio.png" alt="Pipeline diagram showing problem and BCS solution for EEG-to-image evaluation.">
-        </figure>
-
         <div class="problem-solution-strip">
           <article class="problem-panel">
-            <span class="board-number">01</span>
             <p class="eyebrow">The problem</p>
             <h3>Metric harshness and semantic blindness</h3>
             <p>Blurry EEG reconstructions can preserve meaning but receive low visual scores, while plausible images can depict the wrong object or scene.</p>
           </article>
           <article class="solution-panel">
-            <span class="board-number">02</span>
             <p class="eyebrow">Our solution</p>
             <h3>VLM-annotated, balanced, distilled multi-VLM consensus</h3>
             <p>BCS separates perceptual recoverability from semantic recoverability, then merges consensus supervision with human agreement into one coherence evaluator.</p>
           </article>
         </div>
 
-        <div class="contribution-strip">
-          <article><h3>Reveals metric failure modes</h3><p>Separates what standard metrics compress.</p></article>
-          <article><h3>BCI-aware VLM protocol</h3><p>Uses targeted perceptual and semantic questions.</p></article>
-          <article><h3>Reusable evaluator</h3><p>Distills multi-VLM consensus into one compact score.</p></article>
-        </div>
+        <figure class="pipeline-board">
+          <img src="pipeline_drawio.png" alt="Pipeline diagram showing problem and BCS solution for EEG-to-image evaluation.">
+        </figure>
       </div>
+
     </div>
   </section>
 
@@ -161,37 +136,58 @@
     </div>
   </section>
 
-  <section id="validation" class="section-soft">
+  <section id="key-results" class="section-white">
     <div class="wrap-wide">
-      <div class="validation-intro reveal">
-        <p class="eyebrow">More key results</p>
-        <p>The validation section stays concise: show VLM agreement, show human agreement, then send readers to the paper for the full protocol.</p>
+      <div class="result-grid reveal">
+        <article>
+          <strong>0.850</strong>
+          <span>SAS-r with semantic consensus</span>
+          <small>held-out EEG reconstruction pairs</small>
+        </article>
+        <article>
+          <strong>0.079</strong>
+          <span>PAS mean absolute error</span>
+          <small>low error on perceptual alignment</small>
+        </article>
+        <article>
+          <strong>0.882</strong>
+          <span>Cohen’s κ for joint coherence</span>
+          <small>18 human annotators</small>
+        </article>
       </div>
 
-      <div class="validation-layout reveal">
-        <figure class="paper-figure">
-          <img src="figure3_vlm_agreement.png" alt="Agreement and rationale similarity among four VLM evaluators.">
-          <figcaption>VLM agreement is useful but not identical across models, which motivates consensus supervision.</figcaption>
-        </figure>
+      <span id="validation" class="section-anchor" aria-hidden="true"></span>
+      <div class="results-validation">
+        <div class="validation-intro reveal">
+          <p class="eyebrow">More key results</p>
+          <p>The validation section stays concise: show VLM agreement, show human agreement, then send readers to the paper for the full protocol.</p>
+        </div>
 
-        <div class="agreement-card">
-          <h3>Human agreement</h3>
-          <div class="bar-row">
-            <span>Perceptual alone</span>
-            <b>0.110</b>
-            <i style="--w:11%;--c:var(--static)"></i>
+        <div class="validation-layout reveal">
+          <figure class="paper-figure">
+            <img src="figure3_vlm_agreement.png" alt="Agreement and rationale similarity among four VLM evaluators.">
+            <figcaption>VLM agreement is useful but not identical across models, which motivates consensus supervision.</figcaption>
+          </figure>
+
+          <div class="agreement-card">
+            <h3>Human agreement</h3>
+            <div class="bar-row">
+              <span>Perceptual alone</span>
+              <b>0.110</b>
+              <i style="--w:11%;--c:var(--static)"></i>
+            </div>
+            <div class="bar-row">
+              <span>Semantic alone</span>
+              <b>0.483</b>
+              <i style="--w:48.3%;--c:var(--error)"></i>
+            </div>
+            <div class="bar-row best">
+              <span>Joint coherence</span>
+              <b>0.882</b>
+              <i style="--w:88.2%;--c:var(--signal)"></i>
+            </div>
+            <p>Cohen’s κ across 18 annotators. The combined judgment is the reliable one.</p>
           </div>
-          <div class="bar-row">
-            <span>Semantic alone</span>
-            <b>0.483</b>
-            <i style="--w:48.3%;--c:var(--error)"></i>
-          </div>
-          <div class="bar-row best">
-            <span>Joint coherence</span>
-            <b>0.882</b>
-            <i style="--w:88.2%;--c:var(--signal)"></i>
-          </div>
-          <p>Cohen’s κ across 18 annotators. The combined judgment is the reliable one.</p>
         </div>
       </div>
 

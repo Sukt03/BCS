@@ -246,6 +246,10 @@ section {
   padding: 74px 0;
 }
 
+.pipeline-intro-section {
+  padding-top: 36px;
+}
+
 .section-white {
   position: relative;
   background: rgba(255, 255, 255, .42);
@@ -516,43 +520,37 @@ section {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: hidden;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--line);
-  box-shadow: var(--shadow);
+  background: #fff;
+  box-shadow: 0 18px 42px -36px rgba(7, 20, 47, .35);
 }
 
 .result-grid article {
   --metric: var(--signal-dark);
-  --metric-soft: rgba(11, 102, 178, .08);
   position: relative;
-  padding: 30px;
-  border-top: 5px solid var(--metric);
-  background:
-    linear-gradient(180deg, var(--metric-soft), rgba(255, 255, 255, .94) 38%),
-    rgba(255, 255, 255, .92);
+  padding: 24px;
+  border-top: 3px solid var(--metric);
+  background: rgba(255, 255, 255, .92);
 }
 
 .result-grid article:nth-child(1) {
   --metric: #16824f;
-  --metric-soft: rgba(22, 130, 79, .12);
 }
 
 .result-grid article:nth-child(2) {
   --metric: #c98200;
-  --metric-soft: rgba(201, 130, 0, .15);
 }
 
 .result-grid article:nth-child(3) {
   --metric: #b5304d;
-  --metric-soft: rgba(181, 48, 77, .13);
 }
 
 .result-grid strong {
   display: block;
   color: var(--metric);
-  font: 700 clamp(2rem, 4vw, 3.25rem)/1 var(--mono);
+  font: 700 clamp(1.8rem, 3.4vw, 2.85rem)/1 var(--mono);
   letter-spacing: -.06em;
 }
 
@@ -566,6 +564,10 @@ section {
 .result-grid small {
   color: var(--faint);
   font: 500 .72rem/1.45 var(--mono);
+}
+
+.results-validation {
+  margin: 28px 0;
 }
 
 .summary-board {
@@ -632,7 +634,6 @@ section {
 
 .pipeline-board {
   padding: 18px;
-  border-bottom: 1px solid var(--line);
   background: #fff;
 }
 
@@ -666,18 +667,6 @@ section {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 245, 247, .95)),
     #fff;
-}
-
-.board-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
-  color: var(--signal-dark);
-  font: 700 .72rem var(--mono);
 }
 
 .contribution-strip {
