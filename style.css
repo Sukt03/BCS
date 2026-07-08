@@ -142,11 +142,11 @@ footer {
   height: 260px;
   fill: none;
   stroke: var(--signal);
-  stroke-width: 1.15;
+  stroke-width: 1.65;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: .075;
-  filter: drop-shadow(0 0 8px rgba(11, 102, 178, .05));
+  opacity: .13;
+  filter: drop-shadow(0 0 10px rgba(11, 102, 178, .1));
 }
 
 .signal-a {
@@ -157,7 +157,7 @@ footer {
 .signal-b {
   top: 58%;
   animation: signal-drift 64s linear infinite reverse;
-  opacity: .052;
+  opacity: .09;
 }
 
 @keyframes signal-drift {
@@ -181,17 +181,17 @@ footer {
 
 .nav-inner {
   width: min(100% - 48px, 1180px);
-  height: 62px;
+  min-height: 58px;
   margin: auto;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 18px;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin-right: auto;
   min-width: 0;
 }
@@ -211,16 +211,17 @@ footer {
 
 .nav-acceptance {
   padding: 5px 9px;
-  border: 1px solid rgba(11, 102, 178, .18);
+  border: 1px solid rgba(82, 94, 112, .18);
   border-radius: 999px;
   background: rgba(255, 255, 255, .64);
-  color: var(--signal-dark);
+  color: var(--muted);
   white-space: nowrap;
 }
 
 .nav nav {
   display: flex;
-  gap: 22px;
+  gap: 16px;
+  flex-shrink: 0;
 }
 
 .nav nav a {
@@ -233,6 +234,7 @@ footer {
 }
 
 .nav-paper {
+  flex-shrink: 0;
   padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -241,7 +243,7 @@ footer {
 }
 
 section {
-  padding: 100px 0;
+  padding: 74px 0;
 }
 
 .section-white {
@@ -304,7 +306,7 @@ section {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 90px 0 92px;
+  padding: 54px 0 50px;
   background: transparent;
 }
 
@@ -338,12 +340,12 @@ section {
 .hero h1 {
   max-width: 900px;
   margin: 0 auto;
-  font-size: clamp(3.15rem, 8.4vw, 7rem);
+  font-size: clamp(3rem, 7.2vw, 6.2rem);
 }
 
 .subtitle {
   max-width: 860px;
-  margin: 18px auto 16px;
+  margin: 14px auto 12px;
   color: var(--signal-dark);
   font: 600 clamp(1.08rem, 2.3vw, 1.48rem)/1.42 var(--display);
   letter-spacing: -.02em;
@@ -360,7 +362,7 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin: 28px 0 36px;
+  margin: 20px 0 8px;
 }
 
 .link-row a,
@@ -597,6 +599,7 @@ section {
 }
 
 .issue-strip,
+.problem-solution-strip,
 .contribution-strip {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -606,6 +609,7 @@ section {
 }
 
 .issue-strip article,
+.problem-solution-strip article,
 .contribution-strip article {
   min-height: 150px;
   padding: 24px;
@@ -613,15 +617,55 @@ section {
 }
 
 .issue-strip h3,
+.problem-solution-strip h3,
 .contribution-strip h3 {
   margin: 8px 0 8px;
   color: var(--signal-dark);
 }
 
 .issue-strip p,
+.problem-solution-strip p,
 .contribution-strip p {
   margin: 0;
   font-size: .97rem;
+}
+
+.pipeline-board {
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.pipeline-board img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(7, 20, 47, .08);
+  border-radius: 16px;
+}
+
+.problem-solution-strip {
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+}
+
+.problem-solution-strip article {
+  min-height: 210px;
+}
+
+.problem-solution-strip .eyebrow {
+  margin: 14px 0 0;
+}
+
+.solution-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(238, 250, 244, .95)),
+    #fff;
+}
+
+.problem-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 245, 247, .95)),
+    #fff;
 }
 
 .board-number {
@@ -634,92 +678,6 @@ section {
   border-radius: 50%;
   color: var(--signal-dark);
   font: 700 .72rem var(--mono);
-}
-
-.flow-strip {
-  display: grid;
-  grid-template-columns: 1fr 28px 1fr 28px 1.35fr 28px 1.1fr 28px 1fr;
-  gap: 0;
-  align-items: stretch;
-  padding: 22px;
-  border-bottom: 1px solid var(--line);
-}
-
-.flow-strip article {
-  min-height: 148px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: #fff;
-}
-
-.flow-strip > i {
-  display: grid;
-  place-items: center;
-  color: var(--signal);
-  font: 700 1.2rem var(--mono);
-  font-style: normal;
-}
-
-.flow-strip span {
-  color: var(--signal-dark);
-  font: 700 .86rem/1.3 var(--display);
-}
-
-.flow-strip b {
-  color: var(--muted);
-  font: 600 .74rem/1.45 var(--mono);
-}
-
-.score-card {
-  background:
-    radial-gradient(circle at 50% 82%, rgba(11, 102, 178, .08), transparent 34%),
-    #fff;
-}
-
-.score-card::after {
-  content: "BCS";
-  align-self: center;
-  display: grid;
-  place-items: center;
-  width: 76px;
-  height: 76px;
-  border: 10px solid rgba(11, 102, 178, .22);
-  border-top-color: var(--signal);
-  border-radius: 50%;
-  color: var(--signal-dark);
-  font: 800 1rem var(--display);
-}
-
-.wave-icon,
-.node-icon {
-  display: block;
-  height: 54px;
-}
-
-.wave-icon {
-  background:
-    linear-gradient(90deg, transparent 0 8%, var(--signal) 8% 10%, transparent 10% 16%, var(--signal) 16% 17%, transparent 17% 25%, var(--signal) 25% 28%, transparent 28% 39%, var(--signal) 39% 40%, transparent 40% 48%, var(--signal) 48% 52%, transparent 52% 64%, var(--signal) 64% 66%, transparent 66% 78%, var(--signal) 78% 82%, transparent 82%),
-    linear-gradient(180deg, transparent 48%, rgba(11, 102, 178, .16) 49% 51%, transparent 52%);
-  opacity: .65;
-}
-
-.node-icon {
-  position: relative;
-  border: 1px solid rgba(11, 102, 178, .2);
-  border-radius: 14px;
-  background:
-    radial-gradient(circle at 20% 50%, var(--signal) 0 4px, transparent 5px),
-    radial-gradient(circle at 44% 28%, var(--signal) 0 4px, transparent 5px),
-    radial-gradient(circle at 46% 72%, var(--signal) 0 4px, transparent 5px),
-    radial-gradient(circle at 74% 50%, var(--signal) 0 4px, transparent 5px),
-    linear-gradient(28deg, transparent 30%, rgba(11, 102, 178, .35) 31% 33%, transparent 34%),
-    linear-gradient(-28deg, transparent 30%, rgba(11, 102, 178, .35) 31% 33%, transparent 34%),
-    #f8fbff;
 }
 
 .contribution-strip {
@@ -747,7 +705,27 @@ section {
   margin-bottom: 40px;
 }
 
+.section-anchor {
+  position: relative;
+  top: -96px;
+  display: block;
+  width: 1px;
+  height: 1px;
+}
+
 .split-head > p {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.problem-intro,
+.validation-intro {
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+.problem-intro p:last-child,
+.validation-intro p:last-child {
   margin: 0;
   font-size: 1.08rem;
 }
@@ -796,8 +774,15 @@ figure {
   gap: 16px;
 }
 
+.solution-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
 .failure-card {
-  padding: 24px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: 22px;
   background: #fff;
@@ -820,11 +805,12 @@ figure {
 
 .failure-card h3 {
   margin: 9px 0 10px;
-  font-size: 1.5rem;
+  font-size: 1.34rem;
 }
 
 .failure-card p {
-  min-height: 92px;
+  min-height: auto;
+  margin: 0;
 }
 
 .failure-card dl {
@@ -855,42 +841,18 @@ figure {
   color: var(--signal-dark);
 }
 
+.failure-card.solution-step {
+  border-color: rgba(31, 122, 88, .18);
+  background: linear-gradient(180deg, #fff, rgba(238, 250, 244, .88));
+}
+
+.failure-card.solution-step > span {
+  color: var(--signal-dark);
+}
+
 .pipeline {
   max-width: 1020px;
   margin-inline: auto;
-}
-
-.method-steps {
-  max-width: 1020px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin: 24px auto 0;
-  padding: 0;
-  list-style: none;
-}
-
-.method-steps li {
-  padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: #fff;
-}
-
-.method-steps span {
-  display: inline-block;
-  margin-bottom: 18px;
-  color: var(--signal-dark);
-  font: 700 .75rem var(--mono);
-}
-
-.method-steps h3 {
-  margin-bottom: 8px;
-}
-
-.method-steps p {
-  margin: 0;
-  font-size: .94rem;
 }
 
 .agreement-card {
@@ -948,31 +910,6 @@ figure {
 .agreement-card p {
   margin: 4px 0 0;
   font-size: .94rem;
-}
-
-.paper-cta {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: center;
-  margin-top: 28px;
-  padding: 24px 28px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, .94);
-  color: var(--ink);
-  font: 700 1rem var(--display);
-  text-decoration: none;
-  box-shadow: var(--shadow);
-}
-
-.paper-cta:hover {
-  border-color: var(--signal);
-}
-
-.paper-cta strong {
-  color: var(--signal-dark);
-  white-space: nowrap;
 }
 
 .bibtex {
@@ -1065,15 +1002,10 @@ footer a {
     max-width: 560px;
   }
 
-  .flow-strip {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .nav-acceptance {
+    display: none;
   }
 
-  .flow-strip > i {
-    transform: rotate(90deg);
-    min-height: 24px;
-  }
 }
 
 @media (max-width: 780px) {
@@ -1092,21 +1024,22 @@ footer a {
   }
 
   section {
-    padding: 72px 0;
+    padding: 60px 0;
   }
 
   .hero {
-    padding: 64px 0 72px;
+    padding: 48px 0 54px;
   }
 
   .hero h1 {
-    font-size: clamp(3rem, 15vw, 5rem);
+    font-size: clamp(2.8rem, 15vw, 4.8rem);
   }
 
   .result-grid,
   .issue-strip,
+  .problem-solution-strip,
   .contribution-strip,
-  .method-steps {
+  .solution-cards {
     grid-template-columns: 1fr;
   }
 
@@ -1119,7 +1052,6 @@ footer a {
     text-align: left;
   }
 
-  .paper-cta,
   footer .wrap {
     flex-direction: column;
     align-items: flex-start;

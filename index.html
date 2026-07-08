@@ -25,8 +25,8 @@
 <header class="nav">
   <div class="nav-inner">
     <div class="nav-left">
-      <a class="nav-brand" href="#top">Lost in Visual Translation</a>
-      <span class="nav-acceptance">Accepted at HBAI 2026</span>
+      <a class="nav-brand" href="#top">IJCAI-ECAI 2026 Workshop HBAI</a>
+      <span class="nav-acceptance">Accepted poster · Human Brain and Artificial Intelligence</span>
     </div>
     <nav aria-label="Primary">
       <a href="#key-results">Results</a>
@@ -51,7 +51,6 @@
           <a href="paper.pdf" target="_blank" rel="noopener"><span>PDF</span> Paper</a>
           <a href="https://openreview.net/forum?id=vVEQUYVaLu&amp;noteId=vVEQUYVaLu" target="_blank" rel="noopener"><span>OR</span> OpenReview</a>
           <a href="https://github.com/Sukt03/bci-coherence-score" target="_blank" rel="noopener"><span>GH</span> GitHub</a>
-          <a href="https://sukt03.github.io/BCS/" target="_blank" rel="noopener"><span>WEB</span> Website</a>
           <span class="link-pending" title="arXiv link pending"><span>AX</span> arXiv soon</span>
           <a href="#bibtex"><span>BIB</span> BibTeX</a>
         </div>
@@ -82,46 +81,24 @@
       <div class="summary-board reveal" aria-label="Poster-style summary of the work">
         <div class="board-title">
           <p class="eyebrow">At a glance</p>
-          <h2>The whole work in one clean visual.</h2>
         </div>
 
-        <div class="issue-strip">
-          <article>
+        <figure class="pipeline-board">
+          <img src="pipeline_drawio.png" alt="Pipeline diagram showing problem and BCS solution for EEG-to-image evaluation.">
+        </figure>
+
+        <div class="problem-solution-strip">
+          <article class="problem-panel">
             <span class="board-number">01</span>
-            <h3>Metric harshness</h3>
-            <p>Blurry EEG reconstructions can preserve the object or scene but receive low visual scores.</p>
+            <p class="eyebrow">The problem</p>
+            <h3>Metric harshness and semantic blindness</h3>
+            <p>Blurry EEG reconstructions can preserve meaning but receive low visual scores, while plausible images can depict the wrong object or scene.</p>
           </article>
-          <article>
+          <article class="solution-panel">
             <span class="board-number">02</span>
-            <h3>Semantic blindness</h3>
-            <p>A plausible reconstruction can depict the wrong thing while still looking visually acceptable.</p>
-          </article>
-        </div>
-
-        <div class="flow-strip">
-          <article>
-            <span>EEG signal</span>
-            <b class="wave-icon" aria-hidden="true"></b>
-          </article>
-          <i aria-hidden="true">→</i>
-          <article>
-            <span>Image reconstruction</span>
-            <b class="node-icon" aria-hidden="true"></b>
-          </article>
-          <i aria-hidden="true">→</i>
-          <article>
-            <span>4 VLM evaluators</span>
-            <b>InternVL3 · SAIL-VL · OLA-7B · Ovis2-8B</b>
-          </article>
-          <i aria-hidden="true">→</i>
-          <article>
-            <span>T-PAS + T-SAS</span>
-            <b>perceptual + semantic recoverability</b>
-          </article>
-          <i aria-hidden="true">→</i>
-          <article class="score-card">
-            <span>BCS</span>
-            <b>0–1 coherence score</b>
+            <p class="eyebrow">Our solution</p>
+            <h3>VLM-annotated, balanced, distilled multi-VLM consensus</h3>
+            <p>BCS separates perceptual recoverability from semantic recoverability, then merges consensus supervision with human agreement into one coherence evaluator.</p>
           </article>
         </div>
 
@@ -136,12 +113,10 @@
 
   <section id="problem" class="section-soft">
     <div class="wrap-wide">
-      <div class="split-head reveal">
-        <div>
-          <p class="eyebrow">The problem</p>
-          <h2>Standard metrics mix up appearance and meaning.</h2>
-        </div>
-        <p>For EEG-to-image reconstruction, “looks close” is not the same as “means the same thing.” The page now foregrounds that distinction visually before going into method details.</p>
+      <span id="solution" class="section-anchor" aria-hidden="true"></span>
+      <div class="problem-intro reveal">
+        <p class="eyebrow">Problem to solution</p>
+        <p>In EEG-to-image reconstruction, a generated image can be blurry but still grounded in the right object, or it can look clean while drifting semantically. BCS turns that ambiguity into targeted VLM questions and a distilled consensus score.</p>
       </div>
 
       <div class="problem-layout reveal">
@@ -165,49 +140,31 @@
           </article>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section id="solution" class="section-white">
-    <div class="wrap-wide">
-      <div class="section-head center reveal">
-        <p class="eyebrow">Our solution</p>
-        <h2>Ask what survived perceptually and what survived semantically.</h2>
-        <p>BCS separates perceptual recoverability from semantic recoverability, then distills multi-VLM consensus into a reusable coherence evaluator.</p>
-      </div>
-
-      <figure class="paper-figure pipeline reveal">
-        <img src="figure2_pipeline.png" alt="BCS pipeline from EEG-to-image reconstruction to VLM evaluation and distilled coherence score.">
-        <figcaption>The evaluation pipeline: reconstruction → VLM question protocol → T-PAS/T-SAS → BCS → human validation.</figcaption>
-      </figure>
-
-      <ol class="method-steps reveal">
-        <li>
-          <span>01</span>
+      <div class="solution-cards reveal">
+        <article class="failure-card solution-step">
+          <span>Solution 01</span>
           <h3>Route targeted questions</h3>
-          <p>Layout, shape, texture, color, category, identity, function, count, and context are evaluated separately.</p>
-        </li>
-        <li>
-          <span>02</span>
+          <p>BCS asks separately about layout, shape, texture, color, category, identity, function, count, and context.</p>
+        </article>
+        <article class="failure-card solution-step">
+          <span>Solution 02</span>
           <h3>Use diverse VLM judges</h3>
-          <p>Four open-weight models reduce dependence on any single model’s calibration quirks.</p>
-        </li>
-        <li>
-          <span>03</span>
+          <p>Four open-weight VLMs reduce dependence on any single model’s calibration quirks.</p>
+        </article>
+        <article class="failure-card solution-step">
+          <span>Solution 03</span>
           <h3>Distill consensus</h3>
-          <p>A compact BCS head predicts coherence without repeatedly running large VLM evaluators.</p>
-        </li>
-      </ol>
+          <p>A compact BCS head learns the multi-VLM consensus and aligns the combined score with human agreement.</p>
+        </article>
+      </div>
     </div>
   </section>
 
   <section id="validation" class="section-soft">
     <div class="wrap-wide">
-      <div class="split-head reveal">
-        <div>
-          <p class="eyebrow">More key results</p>
-          <h2>People agree most when perception and semantics are judged together.</h2>
-        </div>
+      <div class="validation-intro reveal">
+        <p class="eyebrow">More key results</p>
         <p>The validation section stays concise: show VLM agreement, show human agreement, then send readers to the paper for the full protocol.</p>
       </div>
 
@@ -238,10 +195,6 @@
         </div>
       </div>
 
-      <a class="paper-cta reveal" href="https://openreview.net/forum?id=vVEQUYVaLu&amp;noteId=vVEQUYVaLu" target="_blank" rel="noopener">
-        <span>Need the full experimental setup, ablations, prompts, and dataset details?</span>
-        <strong>OpenReview ↗</strong>
-      </a>
     </div>
   </section>
 
