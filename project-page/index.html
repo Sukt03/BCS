@@ -1,224 +1,24 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lost in Visual Translation</title>
-  <meta name="description" content="A VLM-assisted perceptual-semantic coherence framework for EEG-to-image reconstruction evaluation.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body id="top">
-<a class="skip-link" href="#main">Skip to content</a>
-
-<div class="page-signal-bg" aria-hidden="true">
-  <svg class="signal signal-a" viewBox="0 0 1800 260" preserveAspectRatio="none">
-    <path d="M0 130 L30 132 L48 121 L68 155 L86 95 L105 132 L132 131 L155 134 L174 118 L195 170 L215 88 L235 133 L270 133 L292 131 L315 142 L340 112 L360 158 L380 102 L405 131 L435 130 L456 130 L475 122 L498 151 L520 101 L542 132 L580 130 L605 132 L632 128 L650 139 L672 112 L690 158 L710 104 L735 132 L780 130 L805 131 L830 119 L850 153 L872 94 L895 132 L920 130 L946 132 L970 126 L995 145 L1018 110 L1038 160 L1061 98 L1088 132 L1130 131 L1155 130 L1180 136 L1202 117 L1225 166 L1247 92 L1270 132 L1310 130 L1338 131 L1365 123 L1390 154 L1415 104 L1440 132 L1488 130 L1514 132 L1540 119 L1562 168 L1587 91 L1610 132 L1652 130 L1680 132 L1706 127 L1728 141 L1750 116 L1772 159 L1800 130" />
-  </svg>
-  <svg class="signal signal-b" viewBox="0 0 1800 260" preserveAspectRatio="none">
-    <path d="M0 130 L36 129 L56 138 L82 115 L101 151 L120 108 L146 132 L190 130 L216 131 L242 125 L260 146 L282 103 L302 133 L350 130 L380 132 L406 119 L430 161 L454 91 L476 132 L512 130 L548 132 L576 127 L598 141 L620 111 L646 155 L670 105 L698 132 L742 130 L770 131 L798 121 L824 151 L848 100 L872 133 L915 130 L944 132 L972 124 L996 145 L1020 110 L1042 154 L1070 104 L1096 132 L1142 130 L1170 131 L1200 118 L1225 159 L1250 93 L1272 132 L1315 130 L1346 132 L1374 126 L1396 140 L1420 114 L1444 153 L1472 107 L1500 132 L1545 130 L1572 131 L1600 122 L1626 150 L1650 99 L1674 133 L1720 130 L1750 132 L1775 128 L1800 130" />
-  </svg>
-</div>
-
-<header class="nav">
-  <div class="nav-inner">
-    <div class="nav-left">
-      <a class="nav-brand" href="#top">IJCAI-ECAI 2026 Workshop HBAI</a>
-      <span class="nav-acceptance">Accepted poster · Human Brain and Artificial Intelligence</span>
-    </div>
-    <nav aria-label="Primary">
-      <a href="#problem">Problem</a>
-      <a href="#solution">Solution</a>
-      <a href="#key-results">Results</a>
-      <a href="#validation">Validation</a>
-      <a href="#bibtex">BibTeX</a>
-    </nav>
-    <a class="nav-paper" href="paper.pdf" target="_blank" rel="noopener">Paper ↗</a>
-  </div>
-</header>
-
-<main id="main">
-  <section class="hero">
-    <div class="wrap-wide hero-grid">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">EEG-to-image evaluation</p>
-        <h1>Lost in Visual Translation</h1>
-        <p class="subtitle">A VLM-Assisted Perceptual-Semantic Coherence Framework for EEG-to-Image Reconstruction.</p>
-        <p class="authors">Sukriti Tiwari · Subrahmanyam B H V S P · Nidhi Goyal · Sai Amrit Patnaik</p>
-        <div class="link-row" aria-label="Publication links">
-          <a href="paper.pdf" target="_blank" rel="noopener"><span>PDF</span> Paper</a>
-          <a href="https://openreview.net/forum?id=vVEQUYVaLu&amp;noteId=vVEQUYVaLu" target="_blank" rel="noopener"><span>OR</span> OpenReview</a>
-          <a href="https://github.com/Sukt03/bci-coherence-score" target="_blank" rel="noopener"><span>GH</span> GitHub</a>
-          <span class="link-pending" title="arXiv link pending"><span>AX</span> arXiv soon</span>
-          <a href="#bibtex"><span>BIB</span> BibTeX</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-white pipeline-intro-section">
-    <div class="wrap-wide">
-      <div class="summary-board reveal" aria-label="Poster-style summary of the work">
-        <div class="problem-solution-strip">
-          <article class="problem-panel">
-            <p class="eyebrow">The problem</p>
-            <h3>Metric harshness and semantic blindness</h3>
-            <p>Blurry EEG reconstructions can preserve meaning but receive low visual scores, while plausible images can depict the wrong object or scene.</p>
-          </article>
-          <article class="solution-panel">
-            <p class="eyebrow">Our solution</p>
-            <h3>VLM-annotated, balanced, distilled multi-VLM consensus</h3>
-            <p>BCS separates perceptual recoverability from semantic recoverability, then merges consensus supervision with human agreement into one coherence evaluator.</p>
-          </article>
-        </div>
-
-        <figure class="pipeline-board">
-          <img src="pipeline_drawio.png" alt="Pipeline diagram showing problem and BCS solution for EEG-to-image evaluation.">
-        </figure>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="problem" class="section-soft">
-    <div class="wrap-wide">
-      <span id="solution" class="section-anchor" aria-hidden="true"></span>
-      <div class="problem-intro reveal">
-        <p>In EEG-to-image reconstruction, a generated image can be blurry but still grounded in the right object, or it can look clean while drifting semantically. BCS turns that ambiguity into targeted VLM questions and a distilled consensus score.</p>
-      </div>
-
-      <div class="problem-layout reveal">
-        <figure class="paper-figure">
-          <img src="figure1_failure_modes.jpg" alt="Examples of metric harshness and semantic blindness in EEG-to-image reconstruction.">
-          <figcaption><strong>Failure modes.</strong> One reconstruction keeps the semantic object despite blur; another looks plausible but changes the subject.</figcaption>
-        </figure>
-
-        <div class="failure-cards">
-          <article class="failure-card harsh">
-            <span>Failure 01</span>
-            <h3>Metric harshness</h3>
-            <p>Low-level metrics punish blur and noise even when the object or scene is still recoverable.</p>
-            <dl><div><dt>SSIM</dt><dd>low</dd></div><div><dt>T-SAS</dt><dd>high</dd></div></dl>
-          </article>
-          <article class="failure-card blind">
-            <span>Failure 02</span>
-            <h3>Semantic blindness</h3>
-            <p>A clean-looking image can receive credit while depicting a different object, category, or context.</p>
-            <dl><div><dt>SSIM</dt><dd>acceptable</dd></div><div><dt>T-SAS</dt><dd>low</dd></div></dl>
-          </article>
-        </div>
-      </div>
-
-      <div class="solution-cards reveal">
-        <article class="failure-card solution-step">
-          <span>Solution 01</span>
-          <h3>Route targeted questions</h3>
-          <p>BCS asks separately about layout, shape, texture, color, category, identity, function, count, and context.</p>
-        </article>
-        <article class="failure-card solution-step">
-          <span>Solution 02</span>
-          <h3>Use diverse VLM judges</h3>
-          <p>Four open-weight VLMs reduce dependence on any single model’s calibration quirks.</p>
-        </article>
-        <article class="failure-card solution-step">
-          <span>Solution 03</span>
-          <h3>Distill consensus</h3>
-          <p>A compact BCS head learns the multi-VLM consensus and aligns the combined score with human agreement.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="key-results" class="section-white">
-    <div class="wrap-wide">
-      <span id="validation" class="section-anchor" aria-hidden="true"></span>
-      <div class="results-validation">
-        <div class="validation-intro reveal">
-          <p class="eyebrow">More key results</p>
-          <p>The validation section stays concise: show VLM agreement, show human agreement, then send readers to the paper for the full protocol.</p>
-        </div>
-
-        <div class="validation-layout reveal">
-          <figure class="paper-figure">
-            <img src="figure3_vlm_agreement.png" alt="Agreement and rationale similarity among four VLM evaluators.">
-            <figcaption>VLM agreement is useful but not identical across models, which motivates consensus supervision.</figcaption>
-          </figure>
-
-          <div class="agreement-card">
-            <h3>Human agreement</h3>
-            <div class="bar-row">
-              <span>Perceptual alone</span>
-              <b>0.110</b>
-              <i style="--w:11%;--c:var(--static)"></i>
-            </div>
-            <div class="bar-row">
-              <span>Semantic alone</span>
-              <b>0.483</b>
-              <i style="--w:48.3%;--c:var(--error)"></i>
-            </div>
-            <div class="bar-row best">
-              <span>Joint coherence</span>
-              <b>0.882</b>
-              <i style="--w:88.2%;--c:var(--signal)"></i>
-            </div>
-            <p>Cohen’s κ across 18 annotators. The combined judgment is the reliable one.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="result-grid reveal">
-        <article>
-          <strong>0.850</strong>
-          <span>SAS-r with semantic consensus</span>
-          <small>held-out EEG reconstruction pairs</small>
-        </article>
-        <article>
-          <strong>0.079</strong>
-          <span>PAS mean absolute error</span>
-          <small>low error on perceptual alignment</small>
-        </article>
-        <article>
-          <strong>0.882</strong>
-          <span>Cohen’s κ for joint coherence</span>
-          <small>18 human annotators</small>
-        </article>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="bibtex" class="section-white">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Citation</p>
-        <h2>BibTeX</h2>
-        <p>Accepted at HBAI 2026 (IJCAI-ECAI Workshop), Poster.</p>
-      </div>
-      <div class="bibtex reveal">
-        <button type="button" data-copy-bibtex>Copy</button>
-        <pre id="bibtex-source">@inproceedings{tiwari2026lostvisualtranslation,
-  title     = {Lost in Visual Translation: A VLM-Assisted Perceptual-Semantic
-               Coherence Framework for EEG-to-Image Reconstruction},
-  author    = {Sukriti Tiwari and Subrahmanyam B H V S P and Nidhi Goyal and Sai Amrit Patnaik},
-  booktitle = {Proceedings of the 5th International Workshop on Human Brain
-               and Artificial Intelligence (HBAI 2026), IJCAI-ECAI 2026},
-  year      = {2026},
-  note      = {Poster}
-}</pre>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <p>Lost in Visual Translation · HBAI 2026</p>
-    <a href="#top">Back to top ↑</a>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lost in Visual Translation</title>
+    <link rel="icon" type="image/svg+xml" href="/BCS/favicon.svg" />
+    <meta
+      name="description"
+      content="A VLM-assisted perceptual-semantic coherence framework for EEG-to-image reconstruction evaluation."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/BCS/assets/index-DZjHzOx9.js"></script>
+    <link rel="stylesheet" crossorigin href="/BCS/assets/index-qg8C5PW-.css">
+  </head>
+  <body id="top">
+    <div id="root"></div>
+  </body>
 </html>
